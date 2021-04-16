@@ -171,7 +171,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="WUp-rA-6Oc" kind="show" id="KNY-gC-T5B"/>
+                                    <segue destination="WUp-rA-6Oc" kind="show" identifier="showSignUp" id="KNY-gC-T5B"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -250,7 +250,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="eYl-M1-O6K" detailTextLabel="Eox-hz-VgB" style="IBUITableViewCellStyleSubtitle" id="qnd-wE-LQ2">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="eYl-M1-O6K" detailTextLabel="Eox-hz-VgB" style="IBUITableViewCellStyleSubtitle" id="qnd-wE-LQ2">
                                         <rect key="frame" x="0.0" y="28" width="374" height="55.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qnd-wE-LQ2" id="jVR-8w-EJh">
@@ -375,7 +375,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Crf-TC-ATl"/>
+        <segue reference="9Xs-EI-PxK"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="avatar-1577909_1280" width="1280" height="1280"/>
