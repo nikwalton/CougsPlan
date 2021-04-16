@@ -11,14 +11,25 @@ import FSCalendar
 class CalendarViewController: UIViewController, FSCalendarDelegate {
 
     @IBOutlet var calendar: FSCalendar!
+    var currentDate: Date?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         calendar.delegate = self
+        currentDate = calendar.today
+        print(currentDate!)
     }
-        
+    
+    @IBAction func backCalUnwind(unwindSegue: UIStoryboardSegue) {
+        print("back to calendar")
+    }
+    
+    @IBAction func addEventlUnwind(unwindSegue: UIStoryboardSegue) {
+        print("Add Event")
+    }
+    
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         let format = DateFormatter()
         format.dateFormat = "MM-dd-YYYY"
