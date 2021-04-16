@@ -412,6 +412,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="NtS-Z8-s8D"/>
+                    <connections>
+                        <outlet property="calendar" destination="BaE-EB-lM5" id="r1K-A0-5CN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="msI-0F-r1e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="vAK-IY-FST" userLabel="Exit" sceneMemberID="exit"/>
