@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F665E4626295DC4001ADB87 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F665E4526295DC4001ADB87 /* CalendarViewController.swift */; };
+		3F665E4926295DF7001ADB87 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F665E4826295DF7001ADB87 /* HomeViewController.swift */; };
 		3F77097A2625527C00CAE3EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7709792625527C00CAE3EF /* AppDelegate.swift */; };
 		3F77097C2625527C00CAE3EF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F77097B2625527C00CAE3EF /* SceneDelegate.swift */; };
 		3F77097E2625527C00CAE3EF /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F77097D2625527C00CAE3EF /* LogInViewController.swift */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F665E4526295DC4001ADB87 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		3F665E4826295DF7001ADB87 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3F7709762625527C00CAE3EF /* CougsPlan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CougsPlan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F7709792625527C00CAE3EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F77097B2625527C00CAE3EF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +67,8 @@
 				3F7709822625527D00CAE3EF /* Assets.xcassets */,
 				3F7709842625527D00CAE3EF /* LaunchScreen.storyboard */,
 				3F7709872625527D00CAE3EF /* Info.plist */,
+				3F665E4526295DC4001ADB87 /* CalendarViewController.swift */,
+				3F665E4826295DF7001ADB87 /* HomeViewController.swift */,
 			);
 			path = CougsPlan;
 			sourceTree = "<group>";
@@ -137,6 +143,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F665E4926295DF7001ADB87 /* HomeViewController.swift in Sources */,
+				3F665E4626295DC4001ADB87 /* CalendarViewController.swift in Sources */,
 				3F77097E2625527C00CAE3EF /* LogInViewController.swift in Sources */,
 				3F77097A2625527C00CAE3EF /* AppDelegate.swift in Sources */,
 				3F77097C2625527C00CAE3EF /* SceneDelegate.swift in Sources */,

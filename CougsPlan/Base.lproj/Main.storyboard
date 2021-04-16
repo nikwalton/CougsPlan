@@ -206,33 +206,34 @@
             </objects>
             <point key="canvasLocation" x="18.840579710144929" y="87.723214285714278"/>
         </scene>
-        <!--View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="3Im-u3-NTh">
             <objects>
-                <viewController id="0Z0-WJ-NdQ" sceneMemberID="viewController">
+                <viewController id="0Z0-WJ-NdQ" customClass="HomeViewController" customModule="CougsPlan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7cF-0C-G9T">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="avatar-1577909_1280" translatesAutoresizingMaskIntoConstraints="NO" id="zSC-jo-qG2">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar-1577909_1280" translatesAutoresizingMaskIntoConstraints="NO" id="zSC-jo-qG2">
                                 <rect key="frame" x="20" y="58" width="128" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="9CB-Eo-IL4"/>
+                                    <constraint firstAttribute="width" constant="128" id="Skf-Gf-VUs"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="20"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="User's Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O04-sR-Rma">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User's Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O04-sR-Rma">
                                 <rect key="frame" x="156" y="58" width="118" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="User's Major" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OXW-AX-xmQ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User's Major" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OXW-AX-xmQ">
                                 <rect key="frame" x="156" y="92" width="101" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -298,6 +299,9 @@
                                         <integer key="value" value="4"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="JrG-h8-2Uw" kind="presentation" modalPresentationStyle="fullScreen" id="MLM-2A-U6B"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f9u-TY-O7Z">
                                 <rect key="frame" x="19" y="519" width="374" height="53"/>
@@ -338,12 +342,36 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="syN-D7-n7F"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="OXW-AX-xmQ" firstAttribute="leading" secondItem="zSC-jo-qG2" secondAttribute="trailing" constant="8" symbolic="YES" id="PNZ-gV-HTJ"/>
+                            <constraint firstItem="O04-sR-Rma" firstAttribute="top" secondItem="syN-D7-n7F" secondAttribute="top" constant="14" id="VL5-AY-zOm"/>
+                            <constraint firstItem="OXW-AX-xmQ" firstAttribute="top" secondItem="O04-sR-Rma" secondAttribute="bottom" constant="8" symbolic="YES" id="X8Y-AI-wYK"/>
+                            <constraint firstItem="zSC-jo-qG2" firstAttribute="leading" secondItem="syN-D7-n7F" secondAttribute="leading" constant="20" id="bf2-Sa-47N"/>
+                            <constraint firstItem="O04-sR-Rma" firstAttribute="leading" secondItem="zSC-jo-qG2" secondAttribute="trailing" constant="8" symbolic="YES" id="j9g-cl-qSm"/>
+                            <constraint firstItem="zSC-jo-qG2" firstAttribute="top" secondItem="syN-D7-n7F" secondAttribute="top" constant="14" id="x5f-i3-dzl"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="BR0-zM-7xE"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CcP-t6-iRR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="892.75362318840587" y="87.723214285714278"/>
+        </scene>
+        <!--Calendar View Controller-->
+        <scene sceneID="Qg2-KL-KBT">
+            <objects>
+                <viewController id="JrG-h8-2Uw" customClass="CalendarViewController" customModule="CougsPlan" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="doA-JK-lc4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="9KA-h3-Uuz"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="NtS-Z8-s8D"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="msI-0F-r1e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1793" y="88"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
