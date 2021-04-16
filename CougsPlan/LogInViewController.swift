@@ -15,8 +15,8 @@ class LogInViewController: UIViewController {
     }
 
     
-    @IBAction func backUnwind(unwindSegue: UIStoryboardSegue) {
-        print("back")
+    @IBAction func backLoginUnwind(unwindSegue: UIStoryboardSegue) {
+        print("back to login")
     }
     
     @IBAction func signUpUnwind(unwindSegue: UIStoryboardSegue) {
