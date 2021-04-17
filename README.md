@@ -23,3 +23,6 @@ With CocoaPods installed, run
 in this directory of the repository.
 
 After the dependencies are installed through ```pod install``` open the xcworkspace file in xcode.
+
+# Firebase
+The firebase server and database for this application will only be available until the end of May. After that, I will be disconnecting the two before making this repository public in my portfolio
