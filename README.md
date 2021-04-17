@@ -8,6 +8,8 @@ This project was created as my final project for CPT_S 479 taken during spring 2
 To run this project, you need to have: <br>
 * CocoaPods
   * FSCalendar
+  * Firebase
+    * Firebase/Auth
 
 ## Installing Dependencies
 To install CocoaPods if you havent already, in your terminal run
