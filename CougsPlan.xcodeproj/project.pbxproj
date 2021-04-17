@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,7 @@
 		3F7709812625527C00CAE3EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F77097F2625527C00CAE3EF /* Main.storyboard */; };
 		3F7709832625527D00CAE3EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F7709822625527D00CAE3EF /* Assets.xcassets */; };
 		3F7709862625527D00CAE3EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F7709842625527D00CAE3EF /* LaunchScreen.storyboard */; };
+		3FA3AEAF262A45F7009D4D06 /* CourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA3AEAE262A45F7009D4D06 /* CourseViewController.swift */; };
 		9722F6A99296E486A0F5B880 /* Pods_CougsPlan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8EB636AC5A995E5218B7112 /* Pods_CougsPlan.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		3F7709822625527D00CAE3EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F7709852625527D00CAE3EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F7709872625527D00CAE3EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3FA3AEAE262A45F7009D4D06 /* CourseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseViewController.swift; sourceTree = "<group>"; };
 		7C9CADC215C5DE5208675A54 /* Pods-CougsPlan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CougsPlan.debug.xcconfig"; path = "Target Support Files/Pods-CougsPlan/Pods-CougsPlan.debug.xcconfig"; sourceTree = "<group>"; };
 		99A98BF873E46CF2B9088B6E /* Pods-CougsPlan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CougsPlan.release.xcconfig"; path = "Target Support Files/Pods-CougsPlan/Pods-CougsPlan.release.xcconfig"; sourceTree = "<group>"; };
 		A8EB636AC5A995E5218B7112 /* Pods_CougsPlan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CougsPlan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,7 +54,6 @@
 				7C9CADC215C5DE5208675A54 /* Pods-CougsPlan.debug.xcconfig */,
 				99A98BF873E46CF2B9088B6E /* Pods-CougsPlan.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -86,6 +87,7 @@
 				3F7709872625527D00CAE3EF /* Info.plist */,
 				3F665E4526295DC4001ADB87 /* CalendarViewController.swift */,
 				3F665E4826295DF7001ADB87 /* HomeViewController.swift */,
+				3FA3AEAE262A45F7009D4D06 /* CourseViewController.swift */,
 			);
 			path = CougsPlan;
 			sourceTree = "<group>";
@@ -217,6 +219,7 @@
 				3F77097E2625527C00CAE3EF /* LogInViewController.swift in Sources */,
 				3F77097A2625527C00CAE3EF /* AppDelegate.swift in Sources */,
 				3F77097C2625527C00CAE3EF /* SceneDelegate.swift in Sources */,
+				3FA3AEAF262A45F7009D4D06 /* CourseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
