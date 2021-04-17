@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class HomeViewController: UIViewController {
 
@@ -19,6 +20,16 @@ class HomeViewController: UIViewController {
         print("back to home")
     }
 
+    /*
+      When the user taps the WSU Events button, present to
+     them the events webpaged managed by WSU
+     */
+    @IBAction func eventsTapped(_ sender: Any) {
+        let urlString = "https://events.wsu.edu/event/"
+        let url = URL(string: urlString)
+        let safariVC = SFSafariViewController(url: url!)
+        present(safariVC, animated: true, completion: nil)
+    }
     /*
     // MARK: - Navigation
 
