@@ -9,6 +9,10 @@ import UIKit
 
 class SignUpViewController: UIViewController {
 
+    @IBOutlet weak var emailTextBox: UITextField!
+    @IBOutlet weak var passwordTextBox: UITextField!
+    @IBOutlet weak var passwordConfirmation: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -16,6 +20,19 @@ class SignUpViewController: UIViewController {
     }
     
 
+    @IBAction func CreateAccount(_ sender: Any) {
+        if let email = emailTextBox.text,
+           let password = passwordTextBox.text,
+           let passwordConf = passwordConfirmation.text {
+            if password == passwordConf {
+                print("The passwords are the same")
+                //allow the user to sign up
+            } else {
+                print("The passwords don't match")
+                //show an error
+            }
+        }
+    }
     /*
     // MARK: - Navigation
 

@@ -31,25 +31,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bry-0A-qFs">
-                                <rect key="frame" x="20" y="230" width="374" height="30"/>
-                                <color key="backgroundColor" red="0.84699785709381104" green="0.0" blue="0.15658983588218689" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Pt9-bW-DYz"/>
-                                    <constraint firstAttribute="width" constant="374" id="WHm-Cr-jCZ"/>
-                                </constraints>
-                                <state key="normal" title="Create Account">
-                                    <color key="titleColor" systemColor="systemBackgroundColor"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <segue destination="dK6-vM-pYf" kind="unwind" unwindAction="signUpUnwindWithUnwindSegue:" id="WXl-VH-dJA"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y5M-Yc-Aol">
                                 <rect key="frame" x="166" y="20" width="82" height="28"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
@@ -61,7 +42,7 @@
                                 <color key="backgroundColor" red="0.84699785709381104" green="0.0" blue="0.15658983588218689" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="Hew-qz-YXL"/>
-                                    <constraint firstAttribute="width" constant="64" id="UBd-mY-p9E"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="64" id="UBd-mY-p9E"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Back" image="chevron.backward" catalog="system"/>
@@ -74,31 +55,54 @@
                                     <segue destination="dK6-vM-pYf" kind="unwind" unwindAction="backLoginUnwindWithUnwindSegue:" id="pMS-t8-H2F"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bry-0A-qFs">
+                                <rect key="frame" x="38" y="230" width="338" height="30"/>
+                                <color key="backgroundColor" red="0.84699785709381104" green="0.0" blue="0.15658983588218689" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="cbT-h2-kvl"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="338" id="nua-HH-GrA"/>
+                                </constraints>
+                                <state key="normal" title="Create Account">
+                                    <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="CreateAccount:" destination="WUp-rA-6Oc" eventType="touchUpInside" id="yrt-qG-nFE"/>
+                                    <segue destination="dK6-vM-pYf" kind="unwind" unwindAction="signUpUnwindWithUnwindSegue:" id="WXl-VH-dJA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="IQS-Qr-WJd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="7Da-h0-DWg" firstAttribute="centerX" secondItem="R6U-Tq-0VK" secondAttribute="centerX" id="3Vn-Ds-gyq"/>
                             <constraint firstItem="y5M-Yc-Aol" firstAttribute="centerX" secondItem="R6U-Tq-0VK" secondAttribute="centerX" id="3g5-ej-cIo"/>
-                            <constraint firstItem="JRW-HY-Uo0" firstAttribute="leading" secondItem="IQS-Qr-WJd" secondAttribute="leading" constant="20" id="6Yp-pN-fNT"/>
                             <constraint firstItem="7Da-h0-DWg" firstAttribute="leading" secondItem="IQS-Qr-WJd" secondAttribute="leading" constant="20" id="9E9-jo-waW"/>
-                            <constraint firstItem="IQS-Qr-WJd" firstAttribute="trailing" secondItem="7Da-h0-DWg" secondAttribute="trailing" constant="20" id="BX7-WW-jXv"/>
+                            <constraint firstItem="JRW-HY-Uo0" firstAttribute="leading" secondItem="IQS-Qr-WJd" secondAttribute="leading" constant="20" id="JE2-Pa-bpH"/>
                             <constraint firstItem="0U2-BL-5nU" firstAttribute="top" secondItem="7Da-h0-DWg" secondAttribute="bottom" constant="8" symbolic="YES" id="P6a-14-mtz"/>
                             <constraint firstItem="VVq-Z9-XSo" firstAttribute="leading" secondItem="IQS-Qr-WJd" secondAttribute="leading" constant="20" id="TRG-ki-Ch7"/>
                             <constraint firstItem="0U2-BL-5nU" firstAttribute="centerX" secondItem="R6U-Tq-0VK" secondAttribute="centerX" id="Ub1-u3-PmI"/>
                             <constraint firstItem="bry-0A-qFs" firstAttribute="centerX" secondItem="R6U-Tq-0VK" secondAttribute="centerX" id="Vj8-9o-Pdf"/>
-                            <constraint firstItem="JRW-HY-Uo0" firstAttribute="bottom" secondItem="IQS-Qr-WJd" secondAttribute="bottom" id="iK1-dM-Egk"/>
+                            <constraint firstItem="IQS-Qr-WJd" firstAttribute="trailing" secondItem="JRW-HY-Uo0" secondAttribute="trailing" constant="330" id="bgU-P3-oIc"/>
+                            <constraint firstItem="JRW-HY-Uo0" firstAttribute="bottom" secondItem="IQS-Qr-WJd" secondAttribute="bottom" id="cm0-I3-n9P"/>
+                            <constraint firstItem="bry-0A-qFs" firstAttribute="top" secondItem="VVq-Z9-XSo" secondAttribute="bottom" constant="32" id="guk-8D-Dff"/>
                             <constraint firstItem="7Da-h0-DWg" firstAttribute="top" secondItem="y5M-Yc-Aol" secondAttribute="bottom" constant="32" id="kIe-aG-jdw"/>
                             <constraint firstItem="VVq-Z9-XSo" firstAttribute="top" secondItem="0U2-BL-5nU" secondAttribute="bottom" constant="8" symbolic="YES" id="l6o-Pr-8Np"/>
                             <constraint firstItem="y5M-Yc-Aol" firstAttribute="top" secondItem="IQS-Qr-WJd" secondAttribute="top" constant="20" id="ncW-uT-wGF"/>
                             <constraint firstItem="0U2-BL-5nU" firstAttribute="leading" secondItem="IQS-Qr-WJd" secondAttribute="leading" constant="20" id="oqB-cU-wOB"/>
-                            <constraint firstItem="IQS-Qr-WJd" firstAttribute="trailing" secondItem="0U2-BL-5nU" secondAttribute="trailing" constant="20" id="pXc-Vk-LSj"/>
                             <constraint firstItem="VVq-Z9-XSo" firstAttribute="centerX" secondItem="R6U-Tq-0VK" secondAttribute="centerX" id="qe3-g6-NpM"/>
-                            <constraint firstItem="IQS-Qr-WJd" firstAttribute="trailing" secondItem="VVq-Z9-XSo" secondAttribute="trailing" constant="20" id="vDN-B1-K6W"/>
-                            <constraint firstItem="bry-0A-qFs" firstAttribute="top" secondItem="VVq-Z9-XSo" secondAttribute="bottom" constant="32" id="vyu-nC-rQS"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Ihg-fX-fIZ"/>
+                    <connections>
+                        <outlet property="emailTextBox" destination="7Da-h0-DWg" id="9Jl-y5-yKk"/>
+                        <outlet property="passwordConfirmation" destination="VVq-Z9-XSo" id="o2Y-fY-0nL"/>
+                        <outlet property="passwordTextBox" destination="0U2-BL-5nU" id="7TL-pZ-Bfo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Crf-45-DkZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="dK6-vM-pYf" userLabel="Exit" sceneMemberID="exit"/>
