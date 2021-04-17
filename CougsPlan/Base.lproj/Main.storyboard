@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Sign Up View Controller-->
         <scene sceneID="ojj-vF-nb1">
             <objects>
-                <viewController id="WUp-rA-6Oc" sceneMemberID="viewController">
+                <viewController id="WUp-rA-6Oc" customClass="SignUpViewController" customModule="CougsPlan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="R6U-Tq-0VK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -71,7 +71,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="dK6-vM-pYf" kind="unwind" unwindAction="backUnwindWithUnwindSegue:" id="UaZ-Gf-nOu"/>
+                                    <segue destination="dK6-vM-pYf" kind="unwind" unwindAction="backLoginUnwindWithUnwindSegue:" id="pMS-t8-H2F"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -199,6 +199,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="gL0-Sz-5OJ"/>
                     <connections>
+                        <outlet property="emailTextBox" destination="TkA-aB-Zef" id="O0I-S8-kh6"/>
+                        <outlet property="passwordTextBox" destination="aQf-ae-SQ5" id="69M-PR-mXb"/>
                         <segue destination="0Z0-WJ-NdQ" kind="presentation" modalPresentationStyle="fullScreen" id="9Xs-EI-PxK"/>
                     </connections>
                 </viewController>
