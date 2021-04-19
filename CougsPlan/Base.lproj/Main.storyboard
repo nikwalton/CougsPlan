@@ -31,6 +31,25 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bry-0A-qFs">
+                                <rect key="frame" x="38" y="230" width="338" height="30"/>
+                                <color key="backgroundColor" red="0.84699785709381104" green="0.0" blue="0.15658983588218689" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="cbT-h2-kvl"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="338" id="nua-HH-GrA"/>
+                                </constraints>
+                                <state key="normal" title="Create Account">
+                                    <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="CreateAccount:" destination="WUp-rA-6Oc" eventType="touchUpInside" id="yrt-qG-nFE"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y5M-Yc-Aol">
                                 <rect key="frame" x="166" y="20" width="82" height="28"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
@@ -52,29 +71,15 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="dK6-vM-pYf" kind="unwind" unwindAction="backLoginUnwindWithUnwindSegue:" id="pMS-t8-H2F"/>
+                                    <segue destination="dK6-vM-pYf" kind="unwind" unwindAction="backLoginUnwindWithUnwindSegue:" id="LKq-wo-Ou9"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bry-0A-qFs">
-                                <rect key="frame" x="38" y="230" width="338" height="30"/>
-                                <color key="backgroundColor" red="0.84699785709381104" green="0.0" blue="0.15658983588218689" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="cbT-h2-kvl"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="338" id="nua-HH-GrA"/>
-                                </constraints>
-                                <state key="normal" title="Create Account">
-                                    <color key="titleColor" systemColor="systemBackgroundColor"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="CreateAccount:" destination="WUp-rA-6Oc" eventType="touchUpInside" id="yrt-qG-nFE"/>
-                                    <segue destination="dK6-vM-pYf" kind="unwind" unwindAction="signUpUnwindWithUnwindSegue:" id="WXl-VH-dJA"/>
-                                </connections>
-                            </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="br3-Gh-C12">
+                                <rect key="frame" x="165" y="410.5" width="84" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="IQS-Qr-WJd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -83,6 +88,7 @@
                             <constraint firstItem="y5M-Yc-Aol" firstAttribute="centerX" secondItem="R6U-Tq-0VK" secondAttribute="centerX" id="3g5-ej-cIo"/>
                             <constraint firstItem="7Da-h0-DWg" firstAttribute="leading" secondItem="IQS-Qr-WJd" secondAttribute="leading" constant="20" id="9E9-jo-waW"/>
                             <constraint firstItem="JRW-HY-Uo0" firstAttribute="leading" secondItem="IQS-Qr-WJd" secondAttribute="leading" constant="20" id="JE2-Pa-bpH"/>
+                            <constraint firstItem="br3-Gh-C12" firstAttribute="centerX" secondItem="R6U-Tq-0VK" secondAttribute="centerX" id="Ls0-ty-Mdb"/>
                             <constraint firstItem="0U2-BL-5nU" firstAttribute="top" secondItem="7Da-h0-DWg" secondAttribute="bottom" constant="8" symbolic="YES" id="P6a-14-mtz"/>
                             <constraint firstItem="VVq-Z9-XSo" firstAttribute="leading" secondItem="IQS-Qr-WJd" secondAttribute="leading" constant="20" id="TRG-ki-Ch7"/>
                             <constraint firstItem="0U2-BL-5nU" firstAttribute="centerX" secondItem="R6U-Tq-0VK" secondAttribute="centerX" id="Ub1-u3-PmI"/>
@@ -93,6 +99,7 @@
                             <constraint firstItem="7Da-h0-DWg" firstAttribute="top" secondItem="y5M-Yc-Aol" secondAttribute="bottom" constant="32" id="kIe-aG-jdw"/>
                             <constraint firstItem="VVq-Z9-XSo" firstAttribute="top" secondItem="0U2-BL-5nU" secondAttribute="bottom" constant="8" symbolic="YES" id="l6o-Pr-8Np"/>
                             <constraint firstItem="y5M-Yc-Aol" firstAttribute="top" secondItem="IQS-Qr-WJd" secondAttribute="top" constant="20" id="ncW-uT-wGF"/>
+                            <constraint firstItem="br3-Gh-C12" firstAttribute="centerY" secondItem="R6U-Tq-0VK" secondAttribute="centerY" id="nuN-Rd-enB"/>
                             <constraint firstItem="0U2-BL-5nU" firstAttribute="leading" secondItem="IQS-Qr-WJd" secondAttribute="leading" constant="20" id="oqB-cU-wOB"/>
                             <constraint firstItem="VVq-Z9-XSo" firstAttribute="centerX" secondItem="R6U-Tq-0VK" secondAttribute="centerX" id="qe3-g6-NpM"/>
                         </constraints>
@@ -100,8 +107,10 @@
                     <navigationItem key="navigationItem" id="Ihg-fX-fIZ"/>
                     <connections>
                         <outlet property="emailTextBox" destination="7Da-h0-DWg" id="9Jl-y5-yKk"/>
+                        <outlet property="errorLabel" destination="br3-Gh-C12" id="LdE-5D-ZX1"/>
                         <outlet property="passwordConfirmation" destination="VVq-Z9-XSo" id="o2Y-fY-0nL"/>
                         <outlet property="passwordTextBox" destination="0U2-BL-5nU" id="7TL-pZ-Bfo"/>
+                        <segue destination="dK6-vM-pYf" kind="unwind" identifier="LoginUnwind" unwindAction="backLoginUnwindWithUnwindSegue:" id="171-JG-Urc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Crf-45-DkZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -779,7 +788,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="9Xs-EI-PxK"/>
+        <segue reference="Crf-TC-ATl"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="avatar-1577909_1280" width="1280" height="1280"/>

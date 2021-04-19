@@ -36,10 +36,6 @@ class LogInViewController: UIViewController {
     @IBAction func backLoginUnwind(unwindSegue: UIStoryboardSegue) {
         print("back to login")
     }
-    
-    @IBAction func signUpUnwind(unwindSegue: UIStoryboardSegue) {
-        print("sign up")
-    }
 
 }
 
