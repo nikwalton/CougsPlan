@@ -165,7 +165,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="0Z0-WJ-NdQ" kind="presentation" modalPresentationStyle="fullScreen" id="Crf-TC-ATl"/>
+                                    <action selector="signInTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TRF-o5-cwj"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Gk-W7-CBH">
@@ -214,7 +214,7 @@
                     <connections>
                         <outlet property="emailTextBox" destination="TkA-aB-Zef" id="O0I-S8-kh6"/>
                         <outlet property="passwordTextBox" destination="aQf-ae-SQ5" id="69M-PR-mXb"/>
-                        <segue destination="0Z0-WJ-NdQ" kind="presentation" modalPresentationStyle="fullScreen" id="9Xs-EI-PxK"/>
+                        <segue destination="0Z0-WJ-NdQ" kind="presentation" identifier="GoToHome" modalPresentationStyle="fullScreen" id="9Xs-EI-PxK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -362,6 +362,9 @@
                                         <integer key="value" value="4"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="logoutTapped:" destination="0Z0-WJ-NdQ" eventType="touchUpInside" id="s1T-2A-5FF"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="syN-D7-n7F"/>
@@ -376,8 +379,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="BR0-zM-7xE"/>
+                    <connections>
+                        <segue destination="iyM-lA-Rcc" kind="unwind" identifier="LogoutUnwind" unwindAction="backLoginUnwindWithUnwindSegue:" id="TzI-ZB-p0g"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CcP-t6-iRR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="iyM-lA-Rcc" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="892.75362318840587" y="87.723214285714278"/>
         </scene>
@@ -787,9 +794,6 @@
             <point key="canvasLocation" x="2624.6376811594205" y="87.723214285714278"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="Crf-TC-ATl"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="avatar-1577909_1280" width="1280" height="1280"/>
         <image name="chevron.backward" catalog="system" width="96" height="128"/>

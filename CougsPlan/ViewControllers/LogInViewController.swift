@@ -9,7 +9,6 @@ import UIKit
 import Firebase
 
 
-var handle: AuthStateDidChangeListenerHandle?
 
 class LogInViewController: UIViewController {
 
@@ -21,16 +20,25 @@ class LogInViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
-            
-        }
+    override func viewWillDisappear(_ animated: Bool) {
+        self.emailTextBox.text = ""
+        self.passwordTextBox.text = ""
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        Auth.auth().removeStateDidChangeListener(handle!)
+    @IBAction func signInTapped(_ sender: Any) {
+        if let email = emailTextBox.text,
+           let password = passwordTextBox.text {
+            Auth.auth().signIn(withEmail: email, password: password, completion: { [weak self] user, error in
+                guard let strongSelf = self else { return }
+                if (error != nil) {
+                    let alert = UIAlertController(title: "Error", message: "Check Username and Password", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    strongSelf.present(alert, animated: true, completion: nil)
+                }
+               
+                strongSelf.performSegue(withIdentifier: "GoToHome", sender: strongSelf)
+            })
+        }
     }
     
     @IBAction func backLoginUnwind(unwindSegue: UIStoryboardSegue) {
