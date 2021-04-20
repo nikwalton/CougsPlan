@@ -7,6 +7,7 @@
 
 import UIKit
 import SafariServices
+import Firebase
 
 class HomeViewController: UIViewController {
 
@@ -29,6 +30,16 @@ class HomeViewController: UIViewController {
         let url = URL(string: urlString)
         let safariVC = SFSafariViewController(url: url!)
         present(safariVC, animated: true, completion: nil)
+    }
+
+    @IBAction func logoutTapped(_ sender: Any) {
+        do {
+            try Auth.auth().signOut()
+            self.performSegue(withIdentifier: "LogoutUnwind", sender: self)
+        } catch let error as NSError {
+            print("Error with sign out: %@", error)
+        }
+        
     }
     /*
     // MARK: - Navigation
