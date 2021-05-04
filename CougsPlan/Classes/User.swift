@@ -7,19 +7,22 @@
 
 import Foundation
 
-class User {
+
+class User: Codable {
     var name: String
     var major: String
-    var id: String?
+    var uid: String
     
-    init(name: String, major: String) {
+    init(name: String, major: String, uid: String) {
         self.name = name
         self.major = major
+        self.uid = uid
     }
     
     init(dict: [String: Any]) {
         self.name = dict["name"] as! String
         self.major = dict["major"] as! String
+        self.uid = dict["uid"] as! String
     }
     
     func toDict() -> [String: Any] {

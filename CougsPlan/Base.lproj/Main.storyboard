@@ -397,6 +397,7 @@
                     <navigationItem key="navigationItem" id="BR0-zM-7xE"/>
                     <connections>
                         <outlet property="AvatarImage" destination="zSC-jo-qG2" id="Fb8-Uw-GjC"/>
+                        <outlet property="NameText" destination="O04-sR-Rma" id="NBu-SM-cay"/>
                         <segue destination="iyM-lA-Rcc" kind="unwind" identifier="LogoutUnwind" unwindAction="backLoginUnwindWithUnwindSegue:" id="TzI-ZB-p0g"/>
                     </connections>
                 </viewController>

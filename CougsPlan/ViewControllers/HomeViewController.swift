@@ -9,10 +9,23 @@ import UIKit
 import SafariServices
 import Firebase
 
+
 class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var AvatarImage: UIImageView!
+    @IBOutlet weak var NameText: UILabel!
+   
     let picker = UIImagePickerController()
+    var userHandle: AuthStateDidChangeListenerHandle?
+    
+    let db = Firestore.firestore()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        userHandle = Auth.auth().addStateDidChangeListener{ (auth, user) in
+            self.setUserProfile(user)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,6 +33,12 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         picker.delegate = self
         let tapGesutre = UITapGestureRecognizer(target: self, action: #selector(AvatarTapped(tapGesture:)))
         AvatarImage.addGestureRecognizer(tapGesutre)
+    }
+    
+    func setUserProfile(_ user: Firebase.User?) {
+        if let name = user?.displayName {
+            NameText.text = name
+        }
     }
     
     @objc func AvatarTapped(tapGesture: UITapGestureRecognizer)

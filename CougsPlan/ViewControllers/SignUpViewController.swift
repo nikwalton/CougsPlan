@@ -55,6 +55,14 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                         self.errorLabel.text = "error: problem creating user"
                     }
                     
+                    let changeRequest = authResult!.user.createProfileChangeRequest()
+                    changeRequest.displayName = name
+                    changeRequest.commitChanges(completion: {err in
+                        if(err != nil){
+                            self.errorLabel.text = "error: \(String(describing: err))"
+                            return
+                        }
+                    })
                     //return to login
                     let alert = UIAlertController(title: "Coug's Plan", message: "Account Created", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
