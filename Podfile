@@ -9,6 +9,8 @@ target 'CougsPlan' do
   # add pods for desired Firebase products
   # https://firebase.google.com/docs/ios/setup#available-pods
   pod 'Firebase/Auth'
+  pod 'Firebase/Core'
+  pod 'Firebase/Firestore'
 
   # Other Pods for CougsPlan
   pod 'FSCalendar'

@@ -122,6 +122,8 @@
                     <connections>
                         <outlet property="emailTextBox" destination="7Da-h0-DWg" id="9Jl-y5-yKk"/>
                         <outlet property="errorLabel" destination="br3-Gh-C12" id="LdE-5D-ZX1"/>
+                        <outlet property="majorTextBox" destination="OhZ-hX-Jrr" id="MI6-Dv-fAh"/>
+                        <outlet property="nameTextBox" destination="hPI-2g-jJ4" id="Uzm-Q3-45s"/>
                         <outlet property="passwordConfirmation" destination="VVq-Z9-XSo" id="o2Y-fY-0nL"/>
                         <outlet property="passwordTextBox" destination="0U2-BL-5nU" id="7TL-pZ-Bfo"/>
                         <segue destination="dK6-vM-pYf" kind="unwind" identifier="LoginUnwind" unwindAction="backLoginUnwindWithUnwindSegue:" id="171-JG-Urc"/>

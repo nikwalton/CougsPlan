@@ -13,6 +13,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 
 
     @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet weak var nameTextBox: UITextField!
+    @IBOutlet weak var majorTextBox: UITextField!
     @IBOutlet weak var emailTextBox: UITextField!
     @IBOutlet weak var passwordTextBox: UITextField!
     @IBOutlet weak var passwordConfirmation: UITextField!
@@ -30,22 +32,30 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     @IBAction func CreateAccount(_ sender: Any) {
         if let email = emailTextBox.text,
            let password = passwordTextBox.text,
-           let passwordConf = passwordConfirmation.text {
+           let passwordConf = passwordConfirmation.text,
+           let name = nameTextBox.text,
+           let major = majorTextBox.text{
             
             // only try to create a user if the password and password
             // confirmation match
             if password == passwordConf {
                 print("The passwords are the same")
-               
                 // attempt account creation
                 Auth.auth().createUser(withEmail: email, password: password, completion: {
-                    authResult, err in
+                    (authResult, err) in
                     if(err != nil) {
                         self.errorLabel.text = "Error: \(String(describing: err))"
                         self.errorLabel.isHidden = false
                         return
                     }
-                    // successful? Return to login
+                 
+                    //set user's name and major
+                    let db = Firestore.firestore()
+                    db.collection("users").addDocument(data: ["name": name, "major": major, "uid": authResult!.user.uid]) { (err) in
+                        self.errorLabel.text = "error: problem creating user"
+                    }
+                    
+                    //return to login
                     let alert = UIAlertController(title: "Coug's Plan", message: "Account Created", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
                         self.performSegue(withIdentifier: "LoginUnwind", sender: self)
