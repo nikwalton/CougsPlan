@@ -6,13 +6,16 @@
 //
 
 import UIKit
+import Firebase
 
-class CourseViewController: UIViewController {
+class CourseViewController: UIViewController, UITableViewDataSource {
 
+    @IBOutlet weak var CourseTable: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        CourseTable.dataSource = self
     }
     
     @IBAction func backCourseUnwind(unwindSegue: UIStoryboardSegue) {
@@ -28,4 +31,20 @@ class CourseViewController: UIViewController {
     }
     */
 
+    //MARK: - Table View Functions
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = CourseTable.dequeueReusableCell(withIdentifier: "cell")!
+        cell.textLabel?.text = "Testing"
+        cell.detailTextLabel?.text = "sub text"
+        return cell
+    }
+    
 }

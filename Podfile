@@ -11,7 +11,7 @@ target 'CougsPlan' do
   pod 'Firebase/Auth'
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
-
+  pod 'Firebase/Storage'
   # Other Pods for CougsPlan
   pod 'FSCalendar'
 

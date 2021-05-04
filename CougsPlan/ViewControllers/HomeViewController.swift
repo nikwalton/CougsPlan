@@ -8,6 +8,7 @@
 import UIKit
 import SafariServices
 import Firebase
+import Photos
 
 
 class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -18,20 +19,24 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     let picker = UIImagePickerController()
     var userHandle: AuthStateDidChangeListenerHandle?
-    let TheUser = MyUser()
+    var permission = false
     
     let db = Firestore.firestore()
    
+   
     override func viewWillAppear(_ animated: Bool) {
         userHandle = Auth.auth().addStateDidChangeListener{ (auth, user) in
-          self.setUserProfile(user)
+            self.setUserProfile(user)
         }
      
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        Auth.auth().removeStateDidChangeListener(userHandle!)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-    
         // Do any additional setup after loading the view.
         picker.delegate = self
         let tapGesutre = UITapGestureRecognizer(target: self, action: #selector(AvatarTapped(tapGesture:)))
@@ -46,6 +51,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                 print(err.localizedDescription)
                 return
             } else if querySnap!.documents.count != 1 {
+                //this will still trigger on logout but its fine
                 print("more than one document found")
             } else {
                 let doc = querySnap!.documents.first
@@ -53,12 +59,27 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                 self.completeUserQuery(result: dataDescript ?? ["":""])
             }
         }
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        let imageRef = Storage.storage().reference().child("user/\(uid)")
+        imageRef.downloadURL { url, err in
+            if let err = err {
+                print(err.localizedDescription)
+                return
+            } else {
+                
+                if let data = try? Data(contentsOf: url!) {
+                    self.AvatarImage.image = UIImage(data: data)
+                    self.AvatarImage.contentMode = .scaleAspectFill
+                }
+            }
+            
+        }
+        
     }
     
     private func completeUserQuery(result: [String:Any]) {
         guard let name = result["name"] as? String else {return}
         guard let major = result["major"] as? String else {return}
-        guard let uid = result["uid"] as? String else {return}
         
         self.NameText.text = name
         self.MajorText.text = major
@@ -67,7 +88,30 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     @objc func AvatarTapped(tapGesture: UITapGestureRecognizer)
     {
-        profilePicker()
+        checkPermission()
+    }
+    
+    func checkPermission()
+    {
+        if PHPhotoLibrary.authorizationStatus() != PHAuthorizationStatus.authorized {
+            PHPhotoLibrary.requestAuthorization({(status: PHAuthorizationStatus) -> Void in
+                ()
+            })
+        }
+        if PHPhotoLibrary.authorizationStatus() == PHAuthorizationStatus.authorized {
+            self.profilePicker()
+        } else {
+            PHPhotoLibrary.requestAuthorization(requestAuthorizationHandler)
+        }
+    }
+    func requestAuthorizationHandler(status: PHAuthorizationStatus){
+        if PHPhotoLibrary.authorizationStatus() == PHAuthorizationStatus.authorized {
+            print("access granted")
+            self.permission = true
+        } else {
+            print("acess denied")
+            self.permission = false
+        }
     }
     
     func profilePicker() {
@@ -78,9 +122,16 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         //if the image is there
+      
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            AvatarImage.contentMode = .scaleAspectFill
-            AvatarImage.image = image
+            uploadProfile(image) { url in
+                let imageurl = URL(string: url)!
+                if let data = try? Data(contentsOf: imageurl) {
+                    self.AvatarImage.image = UIImage(data: data)
+                    self.AvatarImage.contentMode = .scaleAspectFill
+                }
+            }
+        
         }
         dismiss(animated: true, completion: nil)
     }
@@ -89,6 +140,29 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         dismiss(animated: true, completion: nil)
     }
 
+    func uploadProfile(_ image:UIImage, completion: @escaping (( _ url: String)->()))
+    {
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        let storageRef = Storage.storage().reference().child("user/\(uid)")
+        guard let imageData = image.jpegData(compressionQuality: 0.2) else {return}
+
+        let metadata = StorageMetadata()
+        metadata.contentType = "image/jpg"
+        storageRef.putData(imageData, metadata: metadata ) { (meta, err) in
+            if err == nil, meta != nil {
+                storageRef.downloadURL { (url, err) in
+                    if err == nil {
+                    guard let download = url?.absoluteString else {return}
+                    completion(download)
+                    } else {return}
+                }
+            } else {
+               return
+            }
+        }
+    
+        
+    }
     
     @IBAction func backHomeUnwind(unwindSegue: UIStoryboardSegue) {
         print("back to home")

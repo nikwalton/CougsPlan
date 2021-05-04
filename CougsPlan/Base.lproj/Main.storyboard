@@ -430,7 +430,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="I40-i4-XYA" detailTextLabel="iRm-FT-uGu" style="IBUITableViewCellStyleSubtitle" id="gof-0Q-Eiv">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="I40-i4-XYA" detailTextLabel="iRm-FT-uGu" style="IBUITableViewCellStyleSubtitle" id="gof-0Q-Eiv">
                                         <rect key="frame" x="0.0" y="24.5" width="374" height="55.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gof-0Q-Eiv" id="Z7x-4K-wfZ">
@@ -482,6 +482,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="WIh-NC-1L6"/>
+                    <connections>
+                        <outlet property="CourseTable" destination="6lO-GC-547" id="dC3-D0-Ai3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bhj-gL-k5c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="l97-QK-Kda" userLabel="Exit" sceneMemberID="exit"/>
