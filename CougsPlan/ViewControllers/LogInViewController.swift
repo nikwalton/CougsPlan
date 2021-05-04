@@ -32,6 +32,8 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         self.passwordTextBox.text = ""
     }
     
+    //use google firebase to do authentication
+    //use strong self for redundancy as I think that it isnt needed anymore with swift 5?
     @IBAction func signInTapped(_ sender: Any) {
         if let email = emailTextBox.text,
            let password = passwordTextBox.text {
