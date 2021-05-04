@@ -9,13 +9,43 @@ import UIKit
 import SafariServices
 import Firebase
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    @IBOutlet weak var AvatarImage: UIImageView!
+    let picker = UIImagePickerController()
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        picker.delegate = self
+        let tapGesutre = UITapGestureRecognizer(target: self, action: #selector(AvatarTapped(tapGesture:)))
+        AvatarImage.addGestureRecognizer(tapGesutre)
     }
+    
+    @objc func AvatarTapped(tapGesture: UITapGestureRecognizer)
+    {
+        profilePicker()
+    }
+    
+    func profilePicker() {
+        picker.sourceType = .photoLibrary
+        self.present(picker, animated: true, completion: nil)
+     
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        //if the image is there
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            AvatarImage.contentMode = .scaleAspectFill
+            AvatarImage.image = image
+        }
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+
     
     @IBAction func backHomeUnwind(unwindSegue: UIStoryboardSegue) {
         print("back to home")
