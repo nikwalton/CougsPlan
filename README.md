@@ -10,6 +10,8 @@ To run this project, you need to have: <br>
   * FSCalendar
   * Firebase
     * Firebase/Auth
+    * Firebase/Firestore
+    * Firebase/Core
 
 ## Installing Dependencies
 To install CocoaPods if you havent already, in your terminal run
