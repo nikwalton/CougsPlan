@@ -14,31 +14,55 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 
     @IBOutlet weak var AvatarImage: UIImageView!
     @IBOutlet weak var NameText: UILabel!
-   
+    @IBOutlet weak var MajorText: UILabel!
+    
     let picker = UIImagePickerController()
     var userHandle: AuthStateDidChangeListenerHandle?
+    let TheUser = MyUser()
     
     let db = Firestore.firestore()
-    
+   
     override func viewWillAppear(_ animated: Bool) {
         userHandle = Auth.auth().addStateDidChangeListener{ (auth, user) in
-            self.setUserProfile(user)
+          self.setUserProfile(user)
         }
+     
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+    
         // Do any additional setup after loading the view.
         picker.delegate = self
         let tapGesutre = UITapGestureRecognizer(target: self, action: #selector(AvatarTapped(tapGesture:)))
         AvatarImage.addGestureRecognizer(tapGesutre)
     }
     
-    func setUserProfile(_ user: Firebase.User?) {
-        if let name = user?.displayName {
-            NameText.text = name
+    func setUserProfile(_ user: Firebase.User?){
+        let docRef = Firestore.firestore().collection("users").whereField("uid", isEqualTo: user?.uid ?? "")
+        
+        docRef.getDocuments { (querySnap, err) in
+            if let err = err {
+                print(err.localizedDescription)
+                return
+            } else if querySnap!.documents.count != 1 {
+                print("more than one document found")
+            } else {
+                let doc = querySnap!.documents.first
+                let dataDescript = doc?.data()
+                self.completeUserQuery(result: dataDescript ?? ["":""])
+            }
         }
+    }
+    
+    private func completeUserQuery(result: [String:Any]) {
+        guard let name = result["name"] as? String else {return}
+        guard let major = result["major"] as? String else {return}
+        guard let uid = result["uid"] as? String else {return}
+        
+        self.NameText.text = name
+        self.MajorText.text = major
+        
     }
     
     @objc func AvatarTapped(tapGesture: UITapGestureRecognizer)

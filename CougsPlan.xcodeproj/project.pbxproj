@@ -65,12 +65,12 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		3F6B2621262E811E0019175C /* Classes */ = {
+		3F6B2621262E811E0019175C /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				3F6B2622262E812C0019175C /* User.swift */,
 			);
-			path = Classes;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		3F77096D2625527C00CAE3EF = {
@@ -94,7 +94,7 @@
 		3F7709782625527C00CAE3EF /* CougsPlan */ = {
 			isa = PBXGroup;
 			children = (
-				3F6B2621262E811E0019175C /* Classes */,
+				3F6B2621262E811E0019175C /* Models */,
 				3FA3AEC6262A8735009D4D06 /* ViewControllers */,
 				3FA3AEB4262A75D6009D4D06 /* GoogleService-Info.plist */,
 				3F7709792625527C00CAE3EF /* AppDelegate.swift */,
