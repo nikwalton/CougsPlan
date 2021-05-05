@@ -21,6 +21,45 @@ class CourseViewController: UIViewController, UITableViewDataSource {
     @IBAction func backCourseUnwind(unwindSegue: UIStoryboardSegue) {
         print("back to courses")
     }
+    
+    @IBAction func unwindAddCourse(sender: UIStoryboardSegue){
+        let vc = sender.source as! AddCourseViewController
+        let db = Firestore.firestore()
+        //figure out the days of the week
+        var CourseDays: String = ""
+        
+        //just use if statements for simplicity
+        if vc.MondaySlider.isOn {
+            CourseDays.append("M")
+        }
+        if vc.TuesdaySlider.isOn {
+            CourseDays.append("T")
+        }
+        if vc.WednesdaySlider.isOn {
+            CourseDays.append("W")
+        }
+        if vc.ThursdaySlider.isOn {
+            CourseDays.append("Th")
+        }
+        if vc.FridaySlider.isOn  {
+            CourseDays.append("F")
+        }
+        
+        //set up our dictionary
+        let CourseData: [String: Any] = [
+            "name": vc.CourseTitleText.text!,
+            "time": vc.CourseTimeText.text!,
+            "location": vc.CourseLocationText.text!,
+            "days": CourseDays
+            ]
+        
+        let uid = Auth.auth().currentUser?.uid
+        //path is users/(current user uid)/courses/(current user uid)/
+        //could store this in users/courses/(current user id) but it makes more sense to me to have the
+        //courses stored under the users own document instead of a general collection
+        db.collection("users").document(uid!).collection("courses").document(uid!).setData(CourseData)
+     
+    }
     /*
     // MARK: - Navigation
 

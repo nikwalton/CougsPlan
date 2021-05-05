@@ -612,7 +612,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="cea-zA-2w8"/>
                                     <barButtonItem title="Item" systemItem="done" id="Lqd-XY-bS6">
                                         <connections>
-                                            <action selector="AddCourse:" destination="lB9-1h-ht0" id="cXv-E3-TKQ"/>
+                                            <segue destination="fgu-zq-YZK" kind="unwind" unwindAction="unwindAddCourseWithSender:" id="kd4-mC-lcU"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
