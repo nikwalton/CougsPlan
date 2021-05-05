@@ -424,6 +424,9 @@
                                     <segment title="Thursday"/>
                                     <segment title="Friday"/>
                                 </segments>
+                                <connections>
+                                    <action selector="DateChanged:" destination="Jpe-Sq-XHp" eventType="valueChanged" id="zSw-nQ-p6Y"/>
+                                </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6lO-GC-547">
                                 <rect key="frame" x="20" y="91" width="374" height="722"/>
