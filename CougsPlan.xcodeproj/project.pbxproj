@@ -17,6 +17,7 @@
 		3F7709862625527D00CAE3EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F7709842625527D00CAE3EF /* LaunchScreen.storyboard */; };
 		3F7D607126423DFB0024A8E4 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7D607026423DFB0024A8E4 /* Course.swift */; };
 		3F7D607626424ADE0024A8E4 /* AddCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7D607526424ADE0024A8E4 /* AddCourseViewController.swift */; };
+		3F7D607826425FBA0024A8E4 /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7D607726425FBA0024A8E4 /* AddEventViewController.swift */; };
 		3FA3AEAF262A45F7009D4D06 /* CourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA3AEAE262A45F7009D4D06 /* CourseViewController.swift */; };
 		3FA3AEB2262A7295009D4D06 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA3AEB1262A7295009D4D06 /* MapViewController.swift */; };
 		3FA3AEB5262A75D6009D4D06 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3FA3AEB4262A75D6009D4D06 /* GoogleService-Info.plist */; };
@@ -37,6 +38,7 @@
 		3F7709872625527D00CAE3EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F7D607026423DFB0024A8E4 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		3F7D607526424ADE0024A8E4 /* AddCourseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCourseViewController.swift; sourceTree = "<group>"; };
+		3F7D607726425FBA0024A8E4 /* AddEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
 		3FA3AEAE262A45F7009D4D06 /* CourseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseViewController.swift; sourceTree = "<group>"; };
 		3FA3AEB1262A7295009D4D06 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		3FA3AEB4262A75D6009D4D06 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				3F665E4826295DF7001ADB87 /* HomeViewController.swift */,
 				3F665E4526295DC4001ADB87 /* CalendarViewController.swift */,
 				3F7D607526424ADE0024A8E4 /* AddCourseViewController.swift */,
+				3F7D607726425FBA0024A8E4 /* AddEventViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -253,6 +256,7 @@
 				3F77097E2625527C00CAE3EF /* LogInViewController.swift in Sources */,
 				3F77097A2625527C00CAE3EF /* AppDelegate.swift in Sources */,
 				3F77097C2625527C00CAE3EF /* SceneDelegate.swift in Sources */,
+				3F7D607826425FBA0024A8E4 /* AddEventViewController.swift in Sources */,
 				3F7D607626424ADE0024A8E4 /* AddCourseViewController.swift in Sources */,
 				3FA3AEAF262A45F7009D4D06 /* CourseViewController.swift in Sources */,
 				3FA3AEB2262A7295009D4D06 /* MapViewController.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  AddCourseViewController.swift
+//  AddEventViewController.swift
 //  CougsPlan
 //
 //  Created by Nikolaus Walton on 5/4/21.
@@ -7,19 +7,11 @@
 
 import UIKit
 
+class AddEventViewController: UIViewController {
 
-class AddCourseViewController: UIViewController {
-
-    @IBOutlet weak var CourseTitleText: UITextField!
-    @IBOutlet weak var CourseTimeText: UITextField!
-    @IBOutlet weak var CourseLocationText: UITextField!
-    
-    //sliders for days
-    @IBOutlet weak var MondaySlider: UISwitch!
-    @IBOutlet weak var TuesdaySlider: UISwitch!
-    @IBOutlet weak var WednesdaySlider: UISwitch!
-    @IBOutlet weak var ThursdaySlider: UISwitch!
-    @IBOutlet weak var FridaySlider: UISwitch!
+    @IBOutlet weak var TitleText: UITextField!
+    @IBOutlet weak var TimeText: UITextField!
+    @IBOutlet weak var PlaceText: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +19,7 @@ class AddCourseViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    
+
     /*
     // MARK: - Navigation
 

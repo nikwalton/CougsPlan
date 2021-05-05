@@ -7,6 +7,7 @@
 
 import UIKit
 import FSCalendar
+import Firebase
 
 class CalendarViewController: UIViewController, FSCalendarDelegate {
 
@@ -26,8 +27,25 @@ class CalendarViewController: UIViewController, FSCalendarDelegate {
         print("back to calendar")
     }
     
-    @IBAction func addEventlUnwind(unwindSegue: UIStoryboardSegue) {
+    @IBAction func addEventUnwind(sender: UIStoryboardSegue) {
         print("Add Event")
+        let vc = sender.source as! AddEventViewController
+        
+        let format = DateFormatter()
+        format.dateFormat = "MM-dd-YYYY"
+        
+        let EventData: [String: Any] = [
+            "title": vc.TitleText.text!,
+            "time": vc.TimeText.text!,
+            "location": vc.PlaceText.text!,
+            "date": format.string(from: currentDate!)
+        ]
+        
+        let db = Firestore.firestore()
+        let uid = Auth.auth().currentUser?.uid
+        //similar to course collection path
+        // users/(user uid)/events/(user uid)/
+        db.collection("users").document(uid!).collection("events").document(uid!).setData(EventData)
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
@@ -35,6 +53,7 @@ class CalendarViewController: UIViewController, FSCalendarDelegate {
         format.dateFormat = "MM-dd-YYYY"
         let string = format.string(from: date)
         print(string)
+        currentDate = date
     }
     /*
     // MARK: - Navigation
