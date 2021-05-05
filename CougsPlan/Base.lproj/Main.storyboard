@@ -705,6 +705,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="NtS-Z8-s8D"/>
                     <connections>
+                        <outlet property="TableView" destination="1pa-yd-lTz" id="xSJ-5S-tpF"/>
                         <outlet property="calendar" destination="BaE-EB-lM5" id="r1K-A0-5CN"/>
                     </connections>
                 </viewController>

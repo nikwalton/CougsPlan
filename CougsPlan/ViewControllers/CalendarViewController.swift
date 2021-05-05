@@ -9,10 +9,16 @@ import UIKit
 import FSCalendar
 import Firebase
 
-class CalendarViewController: UIViewController, FSCalendarDelegate {
+class CalendarViewController: UIViewController, FSCalendarDelegate, UITableViewDataSource {
 
     @IBOutlet var calendar: FSCalendar!
+    @IBOutlet weak var TableView: UITableView!
+    
+    //not todays date, but rather the date that is selected on the calendar. Defaults to todays date though
     var currentDate: Date?
+    
+    var events: [Event] = []
+    var currentDateEvents: [Event] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +27,14 @@ class CalendarViewController: UIViewController, FSCalendarDelegate {
         calendar.delegate = self
         currentDate = calendar.today
         print(currentDate!)
+        TableView.dataSource = self
+        
+        let format = DateFormatter()
+        format.dateFormat = "MM-dd-YYYY"
+        let dateString = format.string(from: currentDate!)
+        let testEvent = Event(name: "test", time: "5pm", date: dateString, location: "here")
+        events.append(testEvent)
+        getDatesEvents()
     }
     
     @IBAction func backCalUnwind(unwindSegue: UIStoryboardSegue) {
@@ -45,7 +59,7 @@ class CalendarViewController: UIViewController, FSCalendarDelegate {
         let uid = Auth.auth().currentUser?.uid
         //similar to course collection path
         // users/(user uid)/events/(user uid)/
-        db.collection("users").document(uid!).collection("events").document(uid!).setData(EventData)
+        db.collection("users").document(uid!).collection("events").addDocument(data: EventData)
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
@@ -54,7 +68,44 @@ class CalendarViewController: UIViewController, FSCalendarDelegate {
         let string = format.string(from: date)
         print(string)
         currentDate = date
+        getDatesEvents()
+        TableView.reloadData()
     }
+    
+    func getDatesEvents() {
+        currentDateEvents.removeAll()
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM-dd-YYYY"
+        guard let date = currentDate else {return}
+        let dateString = formatter.string(from: date)
+        
+        for event in events {
+            if event.date == dateString {
+                currentDateEvents.append(event)
+            }
+        }
+    }
+    
+    // MARK: -Table View Stuff
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return currentDateEvents.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = TableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        if currentDateEvents.count > 0 {
+            let event = currentDateEvents[indexPath.row]
+            cell.textLabel?.text = event.name
+        }
+      
+        return cell
+    }
+    
     /*
     // MARK: - Navigation
 
