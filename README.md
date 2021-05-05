@@ -29,4 +29,4 @@ in this directory of the repository.
 After the dependencies are installed through ```pod install``` open the xcworkspace file in xcode.
 
 # Firebase
-The firebase server and database for this application will only be available until the end of May. After that, I will be disconnecting the two before making this repository public in my portfolio
+The firebase server and database for this application will only be available until the end of May at the latest, after that I will be deleting the firebase project and it will no longer function for new clones. However, it will likely work if you set up your own firebase project assuming you set it up to include everything I listed 
