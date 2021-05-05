@@ -12,6 +12,7 @@ target 'CougsPlan' do
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
   pod 'Firebase/Storage'
+  pod 'FirebaseFirestoreSwift', '~> 7.0-beta'
   # Other Pods for CougsPlan
   pod 'FSCalendar'
 

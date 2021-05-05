@@ -48,13 +48,16 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                         self.errorLabel.isHidden = false
                         return
                     }
+                    let docData = [
+                        "name": name,
+                        "major": major,
+                        "uid": authResult!.user.uid
+                    ]
                  
-                    //set user's name and major
+                    //set user's name and major in firebase users document
                     let db = Firestore.firestore()
-                    db.collection("users").addDocument(data: ["name": name, "major": major, "uid": authResult!.user.uid]) { (err) in
-                        self.errorLabel.text = "error: problem creating user"
-                    }
-                    
+                    db.collection("users").document(authResult!.user.uid).setData(docData)
+               
                     let changeRequest = authResult!.user.createProfileChangeRequest()
                     changeRequest.displayName = name
                     changeRequest.commitChanges(completion: {err in

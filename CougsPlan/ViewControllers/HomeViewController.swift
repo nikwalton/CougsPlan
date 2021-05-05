@@ -43,6 +43,8 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         AvatarImage.addGestureRecognizer(tapGesutre)
     }
     
+    //this function wraps all of our needed queries and etc into one function.
+    //might need to do two seperate queries in this function due to changes on how i store the user document
     func setUserProfile(_ user: Firebase.User?){
         let docRef = Firestore.firestore().collection("users").whereField("uid", isEqualTo: user?.uid ?? "")
         
@@ -77,6 +79,8 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
     }
     
+    //tried to use ths to save results into local variables, but since firestore is async
+    //it didnt really work out
     private func completeUserQuery(result: [String:Any]) {
         guard let name = result["name"] as? String else {return}
         guard let major = result["major"] as? String else {return}
@@ -86,6 +90,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
     }
     
+    //check permissions before deciding if the user can access changing their avatar
     @objc func AvatarTapped(tapGesture: UITapGestureRecognizer)
     {
         checkPermission()
@@ -144,6 +149,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     {
         guard let uid = Auth.auth().currentUser?.uid else {return}
         let storageRef = Storage.storage().reference().child("user/\(uid)")
+        //lots of compression to not fill up Firebase/storage. Image is small on the screen anyays, nobody should notice
         guard let imageData = image.jpegData(compressionQuality: 0.2) else {return}
 
         let metadata = StorageMetadata()

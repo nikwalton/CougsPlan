@@ -267,6 +267,8 @@ PODS:
     - "gRPC-C++ (~> 1.28.0)"
     - leveldb-library (~> 1.22)
     - nanopb (~> 2.30908.0)
+  - FirebaseFirestoreSwift (7.11.0-beta):
+    - FirebaseFirestore (~> 7.0)
   - FirebaseInstallations (7.11.0):
     - FirebaseCore (~> 7.0)
     - GoogleUtilities/Environment (~> 7.0)
@@ -343,6 +345,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Firestore
   - Firebase/Storage
+  - FirebaseFirestoreSwift (~> 7.0-beta)
   - FSCalendar
 
 SPEC REPOS:
@@ -355,6 +358,7 @@ SPEC REPOS:
     - FirebaseCore
     - FirebaseCoreDiagnostics
     - FirebaseFirestore
+    - FirebaseFirestoreSwift
     - FirebaseInstallations
     - FirebaseStorage
     - FSCalendar
@@ -377,6 +381,7 @@ SPEC CHECKSUMS:
   FirebaseCore: ec566d917b2195fc2610aeb148dae99f57a788f9
   FirebaseCoreDiagnostics: 5662a3823ffcc0acbaa9a21ba5ed302fac634705
   FirebaseFirestore: 0ce9dafe53565dbbd678986d6f0c05086334183b
+  FirebaseFirestoreSwift: 1e3899e6430e77267cac7da81c555f7a7a49a549
   FirebaseInstallations: a58d4f72ec5861840b84df489f2668d970df558a
   FirebaseStorage: d88ef8e9f152c6a17e44540ae2b93c3be74e9b60
   FSCalendar: e6a2eb9c571bf0719ed797ef807e08426753c241
@@ -390,6 +395,6 @@ SPEC CHECKSUMS:
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
 
-PODFILE CHECKSUM: 5344a259209edd062715dcd69def74d907005d52
+PODFILE CHECKSUM: d600c3aa91e897219620bac3f99c5419b1304ae3
 
 COCOAPODS: 1.10.1

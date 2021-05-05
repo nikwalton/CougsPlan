@@ -491,10 +491,10 @@
             </objects>
             <point key="canvasLocation" x="1791.304347826087" y="-614.73214285714278"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Course View Controller-->
         <scene sceneID="2kh-m0-zlk">
             <objects>
-                <viewController id="lB9-1h-ht0" sceneMemberID="viewController">
+                <viewController id="lB9-1h-ht0" customClass="AddCourseViewController" customModule="CougsPlan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DLp-Du-6cS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -610,7 +610,11 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="cea-zA-2w8"/>
-                                    <barButtonItem title="Item" systemItem="done" id="Lqd-XY-bS6"/>
+                                    <barButtonItem title="Item" systemItem="done" id="Lqd-XY-bS6">
+                                        <connections>
+                                            <action selector="AddCourse:" destination="lB9-1h-ht0" id="cXv-E3-TKQ"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Friday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="joV-g0-Jbn">
@@ -625,6 +629,16 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="Rth-Uv-ouM"/>
+                    <connections>
+                        <outlet property="CourseLocationText" destination="1yd-3A-0aL" id="tj3-lX-7o4"/>
+                        <outlet property="CourseTimeText" destination="2Ap-rN-EaO" id="hGI-d7-DjP"/>
+                        <outlet property="CourseTitleText" destination="6TF-1Q-1Ta" id="gwr-Jr-eK4"/>
+                        <outlet property="FridaySlider" destination="Mvr-kW-qBN" id="AUC-GY-Msl"/>
+                        <outlet property="MondaySlider" destination="8k6-Y7-6iD" id="HeL-Os-e5F"/>
+                        <outlet property="ThursdaySlider" destination="pc6-7a-nvL" id="YC4-r7-Ur2"/>
+                        <outlet property="TuesdaySlider" destination="qDf-Dy-tyc" id="3HC-81-OnF"/>
+                        <outlet property="WednesdaySlider" destination="yBz-jW-osf" id="mKv-bP-vw9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="54d-dW-VRa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="fgu-zq-YZK" userLabel="Exit" sceneMemberID="exit"/>
