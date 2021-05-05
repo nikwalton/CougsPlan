@@ -12,6 +12,8 @@ To run this project, you need to have: <br>
     * Firebase/Auth
     * Firebase/Firestore
     * Firebase/Core
+    * Firebase/Storage
+    * FirebaseFirestoreSwift
 
 ## Installing Dependencies
 To install CocoaPods if you havent already, in your terminal run
