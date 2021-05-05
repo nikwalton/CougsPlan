@@ -29,12 +29,34 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, UITableViewD
         print(currentDate!)
         TableView.dataSource = self
         
-        let format = DateFormatter()
-        format.dateFormat = "MM-dd-YYYY"
-        let dateString = format.string(from: currentDate!)
-        let testEvent = Event(name: "test", time: "5pm", date: dateString, location: "here")
-        events.append(testEvent)
         getDatesEvents()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        events.removeAll()
+        let db = Firestore.firestore()
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        let docRef = db.collection("users").document(uid).collection("events")
+        docRef.getDocuments { (snapshot, err) in
+            if let error = err {
+                print("\(error)")
+            } else {
+                guard let snap = snapshot else {return}
+                for document in snap.documents {
+                    let data = document.data()
+                    
+                    let name = data["title"] as? String ?? "Class"
+                    let time = data["time"] as? String ?? "Time"
+                    let days = data["date"] as? String ?? "days"
+                    let location = data["location"] as? String ?? "location"
+                    
+                    let newEvent = Event(id: document.documentID, name: name, time: time, date: days, location: location)
+                    self.events.append(newEvent)
+                }
+                self.getDatesEvents()
+                self.TableView.reloadData()
+            }
+        }
     }
     
     @IBAction func backCalUnwind(unwindSegue: UIStoryboardSegue) {
@@ -60,6 +82,8 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, UITableViewD
         //similar to course collection path
         // users/(user uid)/events/(user uid)/
         db.collection("users").document(uid!).collection("events").addDocument(data: EventData)
+        
+        self.viewWillAppear(true)
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
