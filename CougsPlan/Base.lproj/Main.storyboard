@@ -405,6 +405,7 @@
                         <outlet property="AvatarImage" destination="zSC-jo-qG2" id="Fb8-Uw-GjC"/>
                         <outlet property="MajorText" destination="OXW-AX-xmQ" id="XcY-ux-yIr"/>
                         <outlet property="NameText" destination="O04-sR-Rma" id="NBu-SM-cay"/>
+                        <outlet property="UpcomingTable" destination="lMo-VA-3mB" id="yLS-xZ-Pxv"/>
                         <segue destination="iyM-lA-Rcc" kind="unwind" identifier="LogoutUnwind" unwindAction="backLoginUnwindWithUnwindSegue:" id="TzI-ZB-p0g"/>
                     </connections>
                 </viewController>

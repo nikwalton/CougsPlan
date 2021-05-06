@@ -11,11 +11,14 @@ import Firebase
 import Photos
 
 
-class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate,
+                          UITableViewDataSource{
 
     @IBOutlet weak var AvatarImage: UIImageView!
     @IBOutlet weak var NameText: UILabel!
     @IBOutlet weak var MajorText: UILabel!
+    
+    @IBOutlet weak var UpcomingTable: UITableView!
     
     let picker = UIImagePickerController()
     var userHandle: AuthStateDidChangeListenerHandle?
@@ -23,15 +26,46 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     let db = Firestore.firestore()
     
-    //will need this for the upcoming table
-    let date = Date()
-
+    var weekyday: String?
+    var dateString: String?
+    
     //need to calculate the day of the week too
     let dayOfWeek: Int = 0
-   
+    var courses: [Course] = []
+    let events: [Event] = []
+    
     override func viewWillAppear(_ animated: Bool) {
+        getWeekDayAndDate()
+        print(weekyday!)
+        print(dateString!)
+        
         userHandle = Auth.auth().addStateDidChangeListener{ (auth, user) in
             self.setUserProfile(user)
+        }
+        
+        //these queries dont work in their own functions,
+        //so into the view will appear they go
+        courses.removeAll()
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        let docRef = db.collection("users").document(uid).collection("courses")
+        docRef.getDocuments { (snapshot, err) in
+            if let error = err {
+                print("\(error)")
+            } else {
+                guard let snap = snapshot else {return}
+                for document in snap.documents {
+                    let data = document.data()
+                    
+                    let name = data["name"] as? String ?? "Class"
+                    let time = data["time"] as? String ?? "Time"
+                    let days = data["days"] as? String ?? "days"
+                    let location = data["location"] as? String ?? "location"
+                    
+                    let newCourse = Course(id: document.documentID, name: name, time: time, days: days, location: location)
+                    self.courses.append(newCourse)
+                }
+                self.UpcomingTable.reloadData()
+            }
         }
      
     }
@@ -40,13 +74,21 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         Auth.auth().removeStateDidChangeListener(userHandle!)
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         picker.delegate = self
+        UpcomingTable.dataSource = self
+        
         let tapGesutre = UITapGestureRecognizer(target: self, action: #selector(AvatarTapped(tapGesture:)))
         AvatarImage.addGestureRecognizer(tapGesutre)
+        
+ 
+        
     }
+    
+
     
     //this function wraps all of our needed queries and etc into one function.
     //might need to do two seperate queries in this function due to changes on how i store the user document
@@ -175,6 +217,33 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
     }
     
+    
+    func getWeekDayAndDate() {
+        let date = Date()
+        let format = DateFormatter()
+        format.dateFormat = "EEEE, MMMM dd, yyyy"
+        let currentDate = format.string(from: date)
+        
+        if currentDate.contains("Monday") {
+            self.weekyday = "M"
+        }
+        else if currentDate.contains("Tuesday") {
+            self.weekyday = "Tu"
+        }
+        else if currentDate.contains("Wednesday") {
+            self.weekyday = "W"
+        }
+        else if currentDate.contains("Thursday") {
+            self.weekyday = "Th"
+        }
+        else if currentDate.contains("friday") {
+            self.weekyday = "F"
+        }
+        
+        format.dateFormat = "MM-dd-YYYY"
+        self.dateString = format.string(from: date)
+    }
+    
     @IBAction func backHomeUnwind(unwindSegue: UIStoryboardSegue) {
         print("back to home")
     }
@@ -198,6 +267,25 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             print("Error with sign out: %@", error)
         }
         
+    }
+    
+    
+    
+    //MARK: - Table View Stuff
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return courses.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UpcomingTable.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let course = courses[indexPath.row]
+        cell.textLabel?.text = course.name
+        cell.detailTextLabel?.text = course.location
+        return cell
     }
     /*
     // MARK: - Navigation
