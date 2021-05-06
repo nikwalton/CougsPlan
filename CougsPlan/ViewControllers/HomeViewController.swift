@@ -39,6 +39,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     var filteredCourses: [Course] = []
     var filteredEvents: [Event] = []
     
+    var combinedList: [Upcoming] = []
     override func viewWillAppear(_ animated: Bool) {
         getWeekDayAndDate()
         print(weekyday!)
@@ -50,6 +51,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         //these queries dont work in their own functions,
         //so into the view will appear they go
+        //starting with courses
         courses.removeAll()
         guard let uid = Auth.auth().currentUser?.uid else {return}
         let docRef = db.collection("users").document(uid).collection("courses")
@@ -73,6 +75,30 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                 self.UpcomingTable.reloadData()
             }
         }
+        
+        //now lets do events
+        //reuse uid since it wont
+        let eventRef = db.collection("users").document(uid).collection("events")
+        eventRef.getDocuments { (snapshot, err) in
+            if let error = err {
+                print("\(error)")
+            } else {
+                guard let snap = snapshot else {return}
+                for document in snap.documents {
+                    let data = document.data()
+                    
+                    let name = data["title"] as? String ?? "Class"
+                    let time = data["time"] as? String ?? "Time"
+                    let days = data["date"] as? String ?? "days"
+                    let location = data["location"] as? String ?? "location"
+                    
+                    let newEvent = Event(id: document.documentID, name: name, time: time, date: days, location: location)
+                    self.events.append(newEvent)
+                }
+                self.filterEvents()
+                self.UpcomingTable.reloadData()
+            }
+        }
      
     }
     
@@ -89,8 +115,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         let tapGesutre = UITapGestureRecognizer(target: self, action: #selector(AvatarTapped(tapGesture:)))
         AvatarImage.addGestureRecognizer(tapGesutre)
-        filterCourses()
-        print(filteredCourses)
+
         
     }
     
@@ -260,6 +285,16 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         UpcomingTable.reloadData()
     }
     
+    func filterEvents() {
+        self.filteredEvents.removeAll()
+        for event in self.events {
+            if event.date == self.dateString! {
+                self.filteredEvents.append(event)
+            }
+        }
+        UpcomingTable.reloadData()
+    }
+    
     //MARK: - Unwinds, and actions
     @IBAction func backHomeUnwind(unwindSegue: UIStoryboardSegue) {
         print("back to home")
@@ -294,16 +329,38 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredCourses.count
+        return filteredCourses.count + filteredEvents.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        self.combineTheLists()
         let cell = UpcomingTable.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        let course = filteredCourses[indexPath.row]
-        cell.textLabel?.text = course.name
-        cell.detailTextLabel?.text = course.location
+        let item = combinedList[indexPath.row]
+        
+        if (item.course != nil) {
+            cell.textLabel?.text = item.course?.name
+            cell.detailTextLabel?.text = item.course?.location
+        }
+        else if (item.event != nil) {
+            cell.textLabel?.text = item.event?.name
+            cell.detailTextLabel?.text = item.event?.location
+        }
         return cell
     }
+    
+    func combineTheLists()
+    {
+        for event in filteredEvents {
+            let newItem = Upcoming(course: nil, event: event)
+            combinedList.append(newItem)
+        }
+        
+        for course in filteredCourses {
+            let newCourse = Upcoming(course: course, event: nil)
+            combinedList.append(newCourse)
+        }
+    }
+    
     /*
     // MARK: - Navigation
 
