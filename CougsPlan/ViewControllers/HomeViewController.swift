@@ -32,7 +32,12 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     //need to calculate the day of the week too
     let dayOfWeek: Int = 0
     var courses: [Course] = []
-    let events: [Event] = []
+    var events: [Event] = []
+    
+    //having a seperate filtered library of courses and events allows me to keep the respnonse clean
+    //by not editing the response
+    var filteredCourses: [Course] = []
+    var filteredEvents: [Event] = []
     
     override func viewWillAppear(_ animated: Bool) {
         getWeekDayAndDate()
@@ -64,6 +69,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                     let newCourse = Course(id: document.documentID, name: name, time: time, days: days, location: location)
                     self.courses.append(newCourse)
                 }
+                self.filterCourses()
                 self.UpcomingTable.reloadData()
             }
         }
@@ -83,13 +89,13 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         let tapGesutre = UITapGestureRecognizer(target: self, action: #selector(AvatarTapped(tapGesture:)))
         AvatarImage.addGestureRecognizer(tapGesutre)
-        
- 
+        filterCourses()
+        print(filteredCourses)
         
     }
     
 
-    
+    //MARK: - User Setup things
     //this function wraps all of our needed queries and etc into one function.
     //might need to do two seperate queries in this function due to changes on how i store the user document
     func setUserProfile(_ user: Firebase.User?){
@@ -217,7 +223,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
     }
     
-    
+    //MARK: - Data filtering for the table
     func getWeekDayAndDate() {
         let date = Date()
         let format = DateFormatter()
@@ -244,6 +250,17 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         self.dateString = format.string(from: date)
     }
     
+    func filterCourses() {
+        self.filteredCourses.removeAll()
+        for course in self.courses {
+            if course.days.contains(weekyday!) {
+                self.filteredCourses.append(course)
+            }
+        }
+        UpcomingTable.reloadData()
+    }
+    
+    //MARK: - Unwinds, and actions
     @IBAction func backHomeUnwind(unwindSegue: UIStoryboardSegue) {
         print("back to home")
     }
@@ -277,12 +294,12 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return courses.count
+        return filteredCourses.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UpcomingTable.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        let course = courses[indexPath.row]
+        let course = filteredCourses[indexPath.row]
         cell.textLabel?.text = course.name
         cell.detailTextLabel?.text = course.location
         return cell
