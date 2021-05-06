@@ -22,7 +22,12 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     var permission = false
     
     let db = Firestore.firestore()
-   
+    
+    //will need this for the upcoming table
+    let date = Date()
+
+    //need to calculate the day of the week too
+    let dayOfWeek: Int = 0
    
     override func viewWillAppear(_ animated: Bool) {
         userHandle = Auth.auth().addStateDidChangeListener{ (auth, user) in

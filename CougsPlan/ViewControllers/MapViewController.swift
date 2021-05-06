@@ -6,13 +6,20 @@
 //
 
 import UIKit
+import MapKit
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, MKMapViewDelegate {
 
+    @IBOutlet weak var MapView: MKMapView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        MapView.delegate = self
+        let pullman = CLLocation(latitude: 46.73127, longitude: -117.17962)
+        MapView.centerLocaation(pullman)
+        
     }
     
 
@@ -26,4 +33,11 @@ class MapViewController: UIViewController {
     }
     */
 
+}
+
+private extension MKMapView {
+   func centerLocaation (_ location: CLLocation, radius: CLLocationDistance = 5000) {
+       let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: radius, longitudinalMeters: radius)
+       setRegion(region, animated: true)
+   }
 }

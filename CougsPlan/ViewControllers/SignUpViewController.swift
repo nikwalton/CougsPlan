@@ -36,6 +36,31 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
            let name = nameTextBox.text,
            let major = majorTextBox.text{
             
+            if email == "" {
+                errorLabel.text = "error: please enter an Email!"
+                errorLabel.isHidden = false
+                return
+            }
+            if name == "" {
+                errorLabel.text = "error: please enter a name!"
+                errorLabel.isHidden = false
+                return
+            }
+            if major == "" {
+                errorLabel.text = "error: please enter a major!"
+                errorLabel.isHidden = false
+                return
+            }
+            
+            if password == "" {
+                errorLabel.text = "error: please enter a Passowrd!!"
+                errorLabel.isHidden = false
+                return
+            }
+            
+            
+            
+            
             // only try to create a user if the password and password
             // confirmation match
             if password == passwordConf {

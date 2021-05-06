@@ -723,10 +723,10 @@
             </objects>
             <point key="canvasLocation" x="1792.753623188406" y="87.723214285714278"/>
         </scene>
-        <!--View Controller-->
+        <!--Map View Controller-->
         <scene sceneID="5wd-6E-V9D">
             <objects>
-                <viewController id="rq9-Gk-r74" sceneMemberID="viewController">
+                <viewController id="rq9-Gk-r74" customClass="MapViewController" customModule="CougsPlan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1eu-8y-gDc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -751,6 +751,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="trg-DK-8ep"/>
+                    <connections>
+                        <outlet property="MapView" destination="naq-av-GyC" id="gGD-fN-LxO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HvU-Go-tN0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="1i5-27-lrG" userLabel="Exit" sceneMemberID="exit"/>
